@@ -1,1417 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="B Lokeswari – Web Developer & AI/DS student from Chennai. Portfolio showcasing projects like Taily Care and Fashion Hub, skills in Python, Web Design, and more." />
-  <meta name="keywords" content="web developer, Python, AI, data science, portfolio, B Lokeswari, Chennai, Taily Care, Fashion Hub" />
-  <meta name="author" content="B Lokeswari" />
-  <meta name="robots" content="index, follow" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="B Lokeswari – Web Developer" />
-  <meta property="og:description" content="Portfolio of B Lokeswari, a passionate Web Developer building accessible and modern web experiences." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://blokeswari.dev" />
+<meta charset="UTF-8">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="B Lokeswari – Web Developer" />
-  <meta name="twitter:description" content="Portfolio of B Lokeswari, Web Developer." />
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-  <title>B Lokeswari – Web Developer</title>
+<title>Blue Portfolio</title>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://blokeswari.dev" />
+<link rel="stylesheet"
+href="style.css">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <style>
-    /* =====================
-       TOKENS
-    ===================== */
-    :root {
-      --navy:    #0F172A;
-      --navy2:   #1E293B;
-      --navy3:   #334155;
-      --indigo:  #6366F1;
-      --indigo2: #818CF8;
-      --amber:   #F59E0B;
-      --slate:   #94A3B8;
-      --white:   #F8FAFC;
-      --white2:  #E2E8F0;
-
-      --font-display: 'Syne', sans-serif;
-      --font-body:    'Inter', sans-serif;
-
-      --radius: 12px;
-      --transition: 0.25s ease;
-    }
-
-    /* =====================
-       RESET & BASE
-    ===================== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      background: var(--navy);
-      color: var(--white);
-      font-family: var(--font-body);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    img { max-width: 100%; display: block; }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--amber);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-      html { scroll-behavior: auto; }
-    }
-
-    /* =====================
-       SKIP LINK
-    ===================== */
-    .skip-link {
-      position: absolute;
-      top: -100%;
-      left: 1rem;
-      background: var(--amber);
-      color: var(--navy);
-      padding: 0.6rem 1.2rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      z-index: 9999;
-      transition: top var(--transition);
-    }
-    .skip-link:focus { top: 1rem; }
-
-    /* =====================
-       HEADER / NAV
-    ===================== */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(99, 102, 241, 0.15);
-    }
-
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
-      color: var(--white);
-    }
-
-    .nav-logo span { color: var(--indigo); }
-
-    nav[aria-label="Primary navigation"] ul {
-      list-style: none;
-      display: flex;
-      gap: 0.25rem;
-    }
-
-    nav[aria-label="Primary navigation"] a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--slate);
-      padding: 0.45rem 0.85rem;
-      border-radius: 8px;
-      transition: color var(--transition), background var(--transition);
-    }
-
-    nav[aria-label="Primary navigation"] a:hover,
-    nav[aria-label="Primary navigation"] a[aria-current="page"] {
-      color: var(--white);
-      background: rgba(99, 102, 241, 0.15);
-    }
-
-    /* hamburger */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--white);
-      padding: 0.4rem;
-    }
-
-    @media (max-width: 680px) {
-      .nav-toggle { display: flex; align-items: center; }
-
-      nav[aria-label="Primary navigation"] {
-        position: fixed;
-        inset: 64px 0 0 0;
-        background: var(--navy2);
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-      }
-
-      nav[aria-label="Primary navigation"].open {
-        display: flex;
-      }
-
-      nav[aria-label="Primary navigation"] ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      nav[aria-label="Primary navigation"] a {
-        font-size: 1.25rem;
-        padding: 0.75rem 2rem;
-      }
-    }
-
-    /* =====================
-       SECTIONS SHARED
-    ===================== */
-    section {
-      padding: 7rem 1.5rem 5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-eyebrow {
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--indigo2);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 1.25rem;
-    }
-
-    .section-title em {
-      font-style: normal;
-      color: var(--indigo);
-    }
-
-    .section-divider {
-      width: 48px;
-      height: 3px;
-      background: var(--amber);
-      border-radius: 2px;
-      margin-bottom: 2.5rem;
-    }
-
-    /* =====================
-       HERO
-    ===================== */
-    #home {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 64px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 3rem;
-      align-items: center;
-      width: 100%;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(99, 102, 241, 0.12);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      color: var(--indigo2);
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 0.35rem 0.85rem;
-      border-radius: 100px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-tag::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--indigo);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(1.4); }
-    }
-
-    .hero-name {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-role {
-      font-family: var(--font-display);
-      font-size: clamp(1.25rem, 3vw, 1.75rem);
-      font-weight: 600;
-      color: var(--indigo);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-bio {
-      font-size: 1.0625rem;
-      color: var(--slate);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-      line-height: 1.75;
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.9375rem;
-      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-      cursor: pointer;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      background: var(--indigo);
-      color: var(--white);
-      box-shadow: 0 4px 24px rgba(99, 102, 241, 0.3);
-    }
-
-    .btn-primary:hover {
-      background: var(--indigo2);
-      box-shadow: 0 6px 32px rgba(99, 102, 241, 0.45);
-    }
-
-    .btn-outline {
-      border: 1.5px solid var(--navy3);
-      color: var(--white2);
-      background: transparent;
-    }
-
-    .btn-outline:hover { border-color: var(--indigo); color: var(--indigo2); }
-
-    /* Signature element: animated bracket */
-    .hero-bracket {
-      position: relative;
-      width: 260px;
-      height: 260px;
-      flex-shrink: 0;
-    }
-
-    .bracket-wrap {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    .bracket-ring {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 1.5px solid rgba(99,102,241,0.15);
-      animation: spin-slow 18s linear infinite;
-    }
-
-    .bracket-ring:nth-child(2) {
-      inset: 20px;
-      border-color: rgba(245,158,11,0.12);
-      animation-duration: 12s;
-      animation-direction: reverse;
-    }
-
-    @keyframes spin-slow {
-      to { transform: rotate(360deg); }
-    }
-
-    .bracket-code {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bracket-code svg {
-      width: 140px;
-      height: 140px;
-    }
-
-    .bracket-dot {
-      position: absolute;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--amber);
-    }
-
-    .bracket-dot:nth-child(1) { top: 20px; right: 55px; animation: orbit 6s linear infinite; }
-    .bracket-dot:nth-child(2) { bottom: 30px; left: 40px; animation: orbit 9s linear infinite reverse; background: var(--indigo); }
-    .bracket-dot:nth-child(3) { top: 50%; right: 10px; animation: orbit 7s linear infinite 2s; background: var(--indigo2); }
-
-    @keyframes orbit {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    @media (max-width: 720px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-bracket { display: none; }
-    }
-
-    /* =====================
-       ABOUT
-    ===================== */
-    #about {
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--slate);
-      margin-bottom: 1rem;
-      font-size: 1.0625rem;
-    }
-
-    .about-text p:last-child { margin-bottom: 0; }
-
-    .about-text strong { color: var(--white); font-weight: 600; }
-
-    .about-cards {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: var(--navy2);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .stat-icon {
-      width: 44px; height: 44px;
-      background: rgba(99,102,241,0.1);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      flex-shrink: 0;
-    }
-
-    .stat-label {
-      font-size: 0.8125rem;
-      color: var(--slate);
-    }
-
-    .stat-value {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--white);
-    }
-
-    @media (max-width: 720px) {
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
-
-    /* =====================
-       SKILLS
-    ===================== */
-    #skills {
-      background: var(--navy2);
-      max-width: 100%;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    #skills > * {
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .skill-category {
-      background: var(--navy);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-    }
-
-    .skill-category-title {
-      font-family: var(--font-display);
-      font-size: 0.875rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 1.25rem;
-    }
-
-    .skill-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .skill-tag {
-      background: rgba(99,102,241,0.1);
-      border: 1px solid rgba(99,102,241,0.2);
-      color: var(--indigo2);
-      font-size: 0.8125rem;
-      font-weight: 500;
-      padding: 0.35rem 0.85rem;
-      border-radius: 100px;
-      transition: background var(--transition), border-color var(--transition);
-    }
-
-    .skill-tag:hover {
-      background: rgba(99,102,241,0.2);
-      border-color: var(--indigo);
-    }
-
-    /* =====================
-       PROJECTS
-    ===================== */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    article.project-card {
-      background: var(--navy2);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: var(--radius);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      transition: border-color var(--transition), transform var(--transition);
-    }
-
-    article.project-card:hover {
-      border-color: rgba(99,102,241,0.4);
-      transform: translateY(-4px);
-    }
-
-    .project-number {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: rgba(99,102,241,0.15);
-      line-height: 1;
-    }
-
-    .project-title {
-      font-family: var(--font-display);
-      font-size: 1.1875rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .project-desc {
-      font-size: 0.9375rem;
-      color: var(--slate);
-      flex: 1;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .project-tag {
-      background: rgba(245,158,11,0.08);
-      border: 1px solid rgba(245,158,11,0.2);
-      color: var(--amber);
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 0.25rem 0.65rem;
-      border-radius: 100px;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 0.25rem;
-    }
-
-    .project-link {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--indigo2);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      transition: color var(--transition);
-    }
-
-    .project-link:hover { color: var(--white); }
-
-    /* =====================
-       EDUCATION
-    ===================== */
-    .education-list {
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .edu-card {
-      background: var(--navy2);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-left: 3px solid var(--indigo);
-      border-radius: var(--radius);
-      padding: 1.75rem 2rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.5rem 2rem;
-      align-items: start;
-    }
-
-    .edu-degree {
-      font-family: var(--font-display);
-      font-size: 1.0625rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .edu-school {
-      font-size: 0.9375rem;
-      color: var(--indigo2);
-      font-weight: 500;
-    }
-
-    .edu-desc {
-      font-size: 0.875rem;
-      color: var(--slate);
-      grid-column: 1 / -1;
-      margin-top: 0.25rem;
-    }
-
-    .edu-year {
-      font-family: var(--font-display);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--amber);
-      background: rgba(245,158,11,0.1);
-      border: 1px solid rgba(245,158,11,0.2);
-      padding: 0.25rem 0.75rem;
-      border-radius: 100px;
-      white-space: nowrap;
-      align-self: start;
-    }
-
-    @media (max-width: 500px) {
-      .edu-card { grid-template-columns: 1fr; }
-      .edu-year { justify-self: start; }
-    }
-
-    /* =====================
-       CONTACT
-    ===================== */
-    #contact {
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .contact-info p {
-      color: var(--slate);
-      margin-bottom: 2rem;
-      font-size: 1.0625rem;
-    }
-
-    .contact-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      color: var(--white2);
-      font-size: 0.9375rem;
-    }
-
-    .contact-item-icon {
-      width: 38px; height: 38px;
-      background: rgba(99,102,241,0.1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .contact-item a {
-      color: var(--indigo2);
-      transition: color var(--transition);
-    }
-
-    .contact-item a:hover { color: var(--white); }
-
-    /* Form */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .form-group label {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--white2);
-      letter-spacing: 0.02em;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: var(--navy2);
-      border: 1.5px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      color: var(--white);
-      font-family: var(--font-body);
-      font-size: 0.9375rem;
-      padding: 0.75rem 1rem;
-      transition: border-color var(--transition), box-shadow var(--transition);
-      width: 100%;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: var(--navy3);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--indigo);
-      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
-      outline: none;
-    }
-
-    .form-group textarea { resize: vertical; min-height: 130px; }
-
-    .form-group select option { background: var(--navy2); }
-
-    .form-note {
-      font-size: 0.8125rem;
-      color: var(--slate);
-    }
-
-    .form-success {
-      display: none;
-      background: rgba(99,102,241,0.1);
-      border: 1px solid rgba(99,102,241,0.3);
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-      color: var(--indigo2);
-      font-size: 0.9375rem;
-    }
-
-    @media (max-width: 800px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-    /* =====================
-       FOOTER
-    ===================== */
-    footer {
-      background: var(--navy2);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .footer-logo {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--white);
-    }
-
-    .footer-logo span { color: var(--indigo); }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .footer-links a {
-      font-size: 0.875rem;
-      color: var(--slate);
-      transition: color var(--transition);
-    }
-
-    .footer-links a:hover { color: var(--white); }
-
-    .footer-copy {
-      font-size: 0.8125rem;
-      color: var(--navy3);
-    }
-
-    /* =====================
-       SCROLL REVEAL UTILITY
-    ===================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
 </head>
 
 <body>
-  <!-- Skip to main content -->
-  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- ========================
-       HEADER
-  ======================== -->
-  <header role="banner">
-    <div class="nav-inner">
-      <a class="nav-logo" href="#home" aria-label="B Lokeswari – home">
-        B<span>.</span>Lokeswari
-      </a>
+<header class="header">
 
-      <button
-        class="nav-toggle"
-        aria-expanded="false"
-        aria-controls="primary-nav"
-        aria-label="Open navigation menu"
-        id="nav-toggle-btn"
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path class="bar top" d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path class="bar mid" d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path class="bar bot" d="M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
+<nav>
 
-      <nav aria-label="Primary navigation" id="primary-nav">
-        <ul role="list">
-          <li><a href="#home"      aria-label="Go to Home section">Home</a></li>
-          <li><a href="#about"     aria-label="Go to About section">About</a></li>
-          <li><a href="#skills"    aria-label="Go to Skills section">Skills</a></li>
-          <li><a href="#projects"  aria-label="Go to Projects section">Projects</a></li>
-          <li><a href="#education" aria-label="Go to Education section">Education</a></li>
-          <li><a href="#contact"   aria-label="Go to Contact section">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<h2 class="logo">
+Portfolio
+</h2>
 
-  <!-- ========================
-       MAIN CONTENT
-  ======================== -->
-  <main id="main-content">
+<ul class="nav-links">
 
-    <!-- HERO -->
-    <section id="home" aria-labelledby="hero-heading">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <p class="hero-tag" aria-label="Currently available for opportunities">Available for opportunities</p>
+<li>
+<a href="#"
+onclick="navigatePage(event,'home')">
+Home
+</a>
+</li>
 
-          <h1 id="hero-heading" class="hero-name">B Lokeswari</h1>
-          <p class="hero-role" aria-label="Role: Web Developer">Web Developer</p>
+<li>
+<a href="#"
+onclick="navigatePage(event,'about')">
+About
+</a>
+</li>
 
-          <p class="hero-bio">
-            I'm a Web Developer and <strong>BTech AI & Data Science</strong> student from <strong>Chennai</strong>, passionate about building clean, accessible interfaces. Currently interning at <strong>Thiranex</strong> and growing my skills across Python, Web Design, and more.
-          </p>
+<li>
+<a href="#"
+onclick="navigatePage(event,'projects')">
+Projects
+</a>
+</li>
 
-          <div class="hero-ctas">
-            <a href="#projects" class="btn btn-primary" aria-label="View my projects">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
-              View Projects
-            </a>
-            <a href="#contact" class="btn btn-outline" aria-label="Contact me">Get in Touch</a>
-          </div>
-        </div>
+<li>
+<a href="#"
+onclick="navigatePage(event,'contact')">
+Contact
+</a>
+</li>
 
-        <!-- Signature animated bracket element -->
-        <div class="hero-bracket" aria-hidden="true" role="presentation">
-          <div class="bracket-wrap">
-            <div class="bracket-ring"></div>
-            <div class="bracket-ring"></div>
-            <div class="bracket-dot"></div>
-            <div class="bracket-dot"></div>
-            <div class="bracket-dot"></div>
-            <div class="bracket-code">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Left bracket -->
-                <path d="M42 20 L24 50 L42 80" stroke="#6366F1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-                  <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="1.4s" fill="freeze"/>
-                </path>
-                <!-- Right bracket -->
-                <path d="M58 20 L76 50 L58 80" stroke="#6366F1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-                  <animate attributeName="stroke-dasharray" from="0 200" to="200 0" dur="1.4s" begin="0.3s" fill="freeze"/>
-                </path>
-                <!-- Slash -->
-                <path d="M55 28 L45 72" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round">
-                  <animate attributeName="stroke-dasharray" from="0 100" to="100 0" dur="0.9s" begin="0.8s" fill="freeze"/>
-                </path>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+</ul>
 
-    <!-- ABOUT -->
-    <section id="about" aria-labelledby="about-heading" class="reveal">
-      <p class="section-eyebrow">Who I Am</p>
-      <h2 id="about-heading" class="section-title">About <em>Me</em></h2>
-      <div class="section-divider" role="presentation" aria-hidden="true"></div>
+<button
+class="theme-btn"
+onclick="toggleTheme()">
 
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            Hi! I'm <strong>B Lokeswari</strong>, a web developer and aspiring AI & Data Science professional based in <strong>Chennai, India</strong>. I love building clean, user-friendly interfaces and am passionate about combining design with data.
-          </p>
-          <p>
-            I'm currently pursuing my <strong>BTech in Artificial Intelligence & Data Science</strong> at Anand Institute of Higher Technology, Chennai, while also completing a <strong>Web Development internship at Thiranex</strong>.
-          </p>
-          <p>
-            My projects include a pet care platform and a fashion e-commerce webpage. I'm always looking to learn, build, and contribute to meaningful projects.
-          </p>
-        </div>
+Theme
 
-        <div class="about-cards" role="list" aria-label="Quick facts">
-          <div class="stat-card" role="listitem">
-            <div class="stat-icon" aria-hidden="true">🎓</div>
-            <div>
-              <p class="stat-label">Degree</p>
-              <p class="stat-value">BTech AI & Data Science</p>
-            </div>
-          </div>
-          <div class="stat-card" role="listitem">
-            <div class="stat-icon" aria-hidden="true">📍</div>
-            <div>
-              <p class="stat-label">Location</p>
-              <p class="stat-value">Chennai, India</p>
-            </div>
-          </div>
-          <div class="stat-card" role="listitem">
-            <div class="stat-icon" aria-hidden="true">💡</div>
-            <div>
-              <p class="stat-label">Focus</p>
-              <p class="stat-value">Web Design &amp; Python</p>
-            </div>
-          </div>
-          <div class="stat-card" role="listitem">
-            <div class="stat-icon" aria-hidden="true">🚀</div>
-            <div>
-              <p class="stat-label">Goal</p>
-              <p class="stat-value">AI-Powered Web Developer</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+</button>
 
-    <!-- SKILLS -->
-    <section id="skills" aria-labelledby="skills-heading">
-      <div>
-        <p class="section-eyebrow">What I Know</p>
-        <h2 id="skills-heading" class="section-title">My <em>Skills</em></h2>
-        <div class="section-divider" role="presentation" aria-hidden="true"></div>
-      </div>
+</nav>
 
-      <div class="skills-grid reveal">
-        <article class="skill-category" aria-labelledby="skill-cat-1">
-          <h3 id="skill-cat-1" class="skill-category-title">Web Development</h3>
-          <ul class="skill-list" role="list">
-            <li><span class="skill-tag">HTML5</span></li>
-            <li><span class="skill-tag">CSS3</span></li>
-            <li><span class="skill-tag">JavaScript</span></li>
-            <li><span class="skill-tag">Responsive Design</span></li>
-            <li><span class="skill-tag">Web Designing</span></li>
-          </ul>
-        </article>
+</header>
 
-        <article class="skill-category" aria-labelledby="skill-cat-2">
-          <h3 id="skill-cat-2" class="skill-category-title">Programming</h3>
-          <ul class="skill-list" role="list">
-            <li><span class="skill-tag">Python</span></li>
-            <li><span class="skill-tag">Data Analysis</span></li>
-            <li><span class="skill-tag">AI & ML Basics</span></li>
-            <li><span class="skill-tag">Problem Solving</span></li>
-          </ul>
-        </article>
 
-        <article class="skill-category" aria-labelledby="skill-cat-3">
-          <h3 id="skill-cat-3" class="skill-category-title">Tools & Productivity</h3>
-          <ul class="skill-list" role="list">
-            <li><span class="skill-tag">Microsoft Excel</span></li>
-            <li><span class="skill-tag">Git &amp; GitHub</span></li>
-            <li><span class="skill-tag">VS Code</span></li>
-            <li><span class="skill-tag">Figma</span></li>
-            <li><span class="skill-tag">Chrome DevTools</span></li>
-          </ul>
-        </article>
 
-        <article class="skill-category" aria-labelledby="skill-cat-4">
-          <h3 id="skill-cat-4" class="skill-category-title">Soft Skills</h3>
-          <ul class="skill-list" role="list">
-            <li><span class="skill-tag">Communication</span></li>
-            <li><span class="skill-tag">Team Collaboration</span></li>
-            <li><span class="skill-tag">Time Management</span></li>
-            <li><span class="skill-tag">Quick Learner</span></li>
-          </ul>
-        </article>
-      </div>
-    </section>
+<main class="container">
 
-    <!-- PROJECTS -->
-    <section id="projects" aria-labelledby="projects-heading" class="reveal">
-      <p class="section-eyebrow">What I've Built</p>
-      <h2 id="projects-heading" class="section-title">Featured <em>Projects</em></h2>
-      <div class="section-divider" role="presentation" aria-hidden="true"></div>
+<section
+id="home"
+class="hero">
 
-      <div class="projects-grid">
-        <article class="project-card" aria-labelledby="proj1-title">
-          <p class="project-number" aria-hidden="true">01</p>
-          <h3 id="proj1-title" class="project-title">Taily Care</h3>
-          <p class="project-desc">A pet care web platform designed to help pet owners find care services, track their pet's health, and connect with veterinarians. Built with a clean, accessible UI and responsive layout.</p>
-          <ul class="project-tags" aria-label="Technologies used">
-            <li><span class="project-tag">HTML5</span></li>
-            <li><span class="project-tag">CSS3</span></li>
-            <li><span class="project-tag">JavaScript</span></li>
-            <li><span class="project-tag">Responsive Design</span></li>
-          </ul>
-          <div class="project-links">
-            <span class="project-link" style="color:var(--slate); cursor:default;" aria-label="GitHub link coming soon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub Coming Soon
-            </span>
-          </div>
-        </article>
+<div>
 
-        <article class="project-card" aria-labelledby="proj2-title">
-          <p class="project-number" aria-hidden="true">02</p>
-          <h3 id="proj2-title" class="project-title">Fashion Hub</h3>
-          <p class="project-desc">A modern fashion e-commerce webpage featuring product listings, category filtering, and a stylish, mobile-first design. Focused on smooth user experience and aesthetic visual layout.</p>
-          <ul class="project-tags" aria-label="Technologies used">
-            <li><span class="project-tag">HTML5</span></li>
-            <li><span class="project-tag">CSS3</span></li>
-            <li><span class="project-tag">JavaScript</span></li>
-            <li><span class="project-tag">Web Design</span></li>
-          </ul>
-          <div class="project-links">
-            <span class="project-link" style="color:var(--slate); cursor:default;" aria-label="GitHub link coming soon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub Coming Soon
-            </span>
-          </div>
-        </article>
+<h1>
+Hello, I'm Lokeswari
+</h1>
 
-        <article class="project-card" aria-labelledby="proj3-title">
-          <p class="project-number" aria-hidden="true">03</p>
-          <h3 id="proj3-title" class="project-title">Accessible Portfolio</h3>
-          <p class="project-desc">This very portfolio — built as part of the Thiranex internship task. Fully semantic HTML5, WCAG 2.1 AA compliant, with animated hero, scroll reveal, and accessible contact form.</p>
-          <ul class="project-tags" aria-label="Technologies used">
-            <li><span class="project-tag">HTML5</span></li>
-            <li><span class="project-tag">CSS3</span></li>
-            <li><span class="project-tag">WCAG 2.1</span></li>
-            <li><span class="project-tag">Thiranex</span></li>
-          </ul>
-          <div class="project-links">
-            <span class="project-link" style="color:var(--slate); cursor:default;" aria-label="GitHub link coming soon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.9-.01 3.29 0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub Coming Soon
-            </span>
-          </div>
-        </article>
-      </div>
-    </section>
+<p>
 
-    <!-- EDUCATION -->
-    <section id="education" aria-labelledby="education-heading" class="reveal">
-      <p class="section-eyebrow">My Background</p>
-      <h2 id="education-heading" class="section-title">Education &amp; <em>Training</em></h2>
-      <div class="section-divider" role="presentation" aria-hidden="true"></div>
+Aspiring Web Developer passionate about creating responsive and user-friendly websites.
 
-      <div class="education-list">
-        <article class="edu-card" aria-labelledby="edu1-title">
-          <div>
-            <h3 id="edu1-title" class="edu-degree">Bachelor of Technology – Artificial Intelligence &amp; Data Science</h3>
-            <p class="edu-school">Anand Institute of Higher Technology, Chennai</p>
-          </div>
-          <span class="edu-year">2022 – 2026</span>
-          <p class="edu-desc">Studying AI, machine learning, data structures, web technologies, and Python programming. Actively involved in internships and real-world project development.</p>
-        </article>
+</p>
 
-        <article class="edu-card" aria-labelledby="edu2-title">
-          <div>
-            <h3 id="edu2-title" class="edu-degree">Web Development Internship – Thiranex</h3>
-            <p class="edu-school">Thiranex Internship Platform</p>
-          </div>
-          <span class="edu-year">2025 – 2026</span>
-          <p class="edu-desc">Hands-on internship focused on semantic HTML5, CSS3, JavaScript, accessibility (WCAG), and building real-world projects including Taily Care and Fashion Hub.</p>
-        </article>
+<button
+onclick="navigatePage(event,'projects')">
 
-        <article class="edu-card" aria-labelledby="edu3-title">
-          <div>
-            <h3 id="edu3-title" class="edu-degree">Higher Secondary Certificate (12th Grade)</h3>
-            <p class="edu-school">Chennai, Tamil Nadu</p>
-          </div>
-          <span class="edu-year">2020 – 2022</span>
-          <p class="edu-desc">Completed Higher Secondary with a focus on Mathematics, Physics, and Computer Science.</p>
-        </article>
-      </div>
-    </section>
+View Projects
 
-    <!-- CONTACT -->
-    <section id="contact" aria-labelledby="contact-heading" class="reveal">
-      <p class="section-eyebrow">Get in Touch</p>
-      <h2 id="contact-heading" class="section-title">Contact <em>Me</em></h2>
-      <div class="section-divider" role="presentation" aria-hidden="true"></div>
+</button>
 
-      <div class="contact-grid">
-        <div class="contact-info">
-          <p>Have a project in mind, want to collaborate, or just want to say hello? I'd love to hear from you.</p>
-          <address class="contact-detail" aria-label="Contact details">
-            <div class="contact-item">
-              <span class="contact-item-icon" aria-hidden="true">✉️</span>
-              <span>Email: <a href="mailto:lokeswari302007@gmail.com">lokeswari302007@gmail.com</a></span>
-            </div>
-            <div class="contact-item">
-              <span class="contact-item-icon" aria-hidden="true">💼</span>
-              <span>LinkedIn: <a href="https://www.linkedin.com/in/b-lokeswari-a00308385" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile (opens in new tab)">linkedin.com/in/b-lokeswari</a></span>
-            </div>
-            <div class="contact-item">
-              <span class="contact-item-icon" aria-hidden="true">📍</span>
-              <span>Location: Chennai, Tamil Nadu, India</span>
-            </div>
-          </address>
-        </div>
+</div>
 
-        <!-- Accessible contact form -->
-        <div>
-          <div class="form-success" id="form-success" role="alert" aria-live="polite">
-            ✅ Message sent! I'll get back to you within 24 hours.
-          </div>
+<img
+src="https://static.vecteezy.com/system/resources/previews/038/974/578/non_2x/ai-generated-professional-portrait-of-a-competent-woman-free-photo.jpg"
 
-          <form
-            class="contact-form"
-            id="contact-form"
-            novalidate
-            aria-label="Contact form"
-            onsubmit="handleSubmit(event)"
-          >
-            <div class="form-row">
-              <div class="form-group">
-                <label for="contact-name">Full Name <span aria-hidden="true">*</span></label>
-                <input
-                  type="text"
-                  id="contact-name"
-                  name="name"
-                  placeholder="Your name"
-                  required
-                  autocomplete="name"
-                  aria-required="true"
-                  aria-describedby="name-error"
-                />
-                <span id="name-error" class="form-note" role="alert" aria-live="polite"></span>
-              </div>
+alt="profile">
 
-              <div class="form-group">
-                <label for="contact-email">Email Address <span aria-hidden="true">*</span></label>
-                <input
-                  type="email"
-                  id="contact-email"
-                  name="email"
-                  placeholder="your@email.com"
-                  required
-                  autocomplete="email"
-                  aria-required="true"
-                  aria-describedby="email-error"
-                />
-                <span id="email-error" class="form-note" role="alert" aria-live="polite"></span>
-              </div>
-            </div>
+</section>
 
-            <div class="form-group">
-              <label for="contact-subject">Subject <span aria-hidden="true">*</span></label>
-              <select
-                id="contact-subject"
-                name="subject"
-                required
-                aria-required="true"
-              >
-                <option value="" disabled selected>Select a topic…</option>
-                <option value="collaboration">Collaboration Opportunity</option>
-                <option value="project">Project Enquiry</option>
-                <option value="internship">Internship / Job Offer</option>
-                <option value="feedback">Feedback</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
 
-            <div class="form-group">
-              <label for="contact-message">Message <span aria-hidden="true">*</span></label>
-              <textarea
-                id="contact-message"
-                name="message"
-                placeholder="Tell me what's on your mind…"
-                required
-                aria-required="true"
-                aria-describedby="message-error"
-                minlength="20"
-              ></textarea>
-              <span id="message-error" class="form-note" role="alert" aria-live="polite"></span>
-            </div>
 
-            <p class="form-note"><span aria-hidden="true">*</span> Required fields</p>
+<section
+id="about"
+class="card">
 
-            <button type="submit" class="btn btn-primary" aria-label="Send your message">
-              Send Message
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
+<h2>
+About Me
+</h2>
 
-  </main>
+<p>
 
-  <!-- FOOTER -->
-  <footer role="contentinfo">
-    <div class="footer-inner">
-      <p class="footer-logo">B<span>.</span>Lokeswari</p>
-      <nav aria-label="Footer navigation">
-        <ul class="footer-links" role="list">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <p class="footer-copy">
-        <small>&copy; <span id="year"></span> B Lokeswari. Built with semantic HTML5 &amp; CSS3.</small>
-      </p>
-    </div>
-  </footer>
+I build responsive websites using HTML, CSS and JavaScript and continuously improve my development skills.
 
-  <!-- ========================
-       JAVASCRIPT
-  ======================== -->
-  <script>
-    /* ---- Year ---- */
-    document.getElementById('year').textContent = new Date().getFullYear();
+</p>
 
-    /* ---- Mobile nav toggle ---- */
-    const toggleBtn = document.getElementById('nav-toggle-btn');
-    const primaryNav = document.getElementById('primary-nav');
+</section>
 
-    toggleBtn.addEventListener('click', () => {
-      const isOpen = primaryNav.classList.toggle('open');
-      toggleBtn.setAttribute('aria-expanded', isOpen);
-      toggleBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-    });
 
-    /* Close nav on link click (mobile) */
-    primaryNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        primaryNav.classList.remove('open');
-        toggleBtn.setAttribute('aria-expanded', 'false');
-        toggleBtn.setAttribute('aria-label', 'Open navigation menu');
-      });
-    });
 
-    /* ---- Active nav link on scroll ---- */
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav[aria-label="Primary navigation"] a');
+<section
+id="projects">
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.removeAttribute('aria-current');
-            if (link.getAttribute('href') === '#' + entry.target.id) {
-              link.setAttribute('aria-current', 'page');
-            }
-          });
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
+<h2>
+Projects
+</h2>
 
-    sections.forEach(sec => observer.observe(sec));
+<div class="projects">
 
-    /* ---- Scroll reveal ---- */
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+<div class="project">
 
-    revealElements.forEach(el => revealObserver.observe(el));
+<h3>
+Portfolio Website
+</h3>
 
-    /* ---- Form validation & submit ---- */
-    function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      let valid = true;
+<p>
 
-      const name = form.querySelector('#contact-name');
-      const email = form.querySelector('#contact-email');
-      const message = form.querySelector('#contact-message');
+Responsive portfolio built using HTML, CSS and JavaScript.
 
-      /* Reset errors */
-      ['name-error', 'email-error', 'message-error'].forEach(id => {
-        document.getElementById(id).textContent = '';
-      });
+</p>
 
-      if (!name.value.trim()) {
-        document.getElementById('name-error').textContent = 'Please enter your name.';
-        valid = false;
-      }
+<a
+href="https://lokeswari302007-oss.github.io/Portfolio-/"
+target="_blank">
 
-      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRe.test(email.value)) {
-        document.getElementById('email-error').textContent = 'Please enter a valid email address.';
-        valid = false;
-      }
+<button>
 
-      if (message.value.trim().length < 20) {
-        document.getElementById('message-error').textContent = 'Message must be at least 20 characters.';
-        valid = false;
-      }
+Open Portfolio
 
-      if (valid) {
-        form.style.display = 'none';
-        const success = document.getElementById('form-success');
-        success.style.display = 'block';
-        success.focus();
-      }
-    }
-  </script>
+</button>
+
+</a>
+
+</div>
+
+
+
+<div class="project">
+
+<h3>
+Weather App
+</h3>
+
+<p>
+
+Weather application project
+
+</p>
+
+</div>
+
+
+
+<div class="project">
+
+<h3>
+Calculator
+</h3>
+
+<p>
+
+Calculator using HTML CSS JS
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section
+id="contact"
+class="card">
+
+<h2>
+Contact
+</h2>
+
+<p>
+
+lokeswari302007@gmail.com
+
+</p>
+
+</section>
+
+</main>
+
+
+<footer>
+
+© 2026 Portfolio
+
+</footer>
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
